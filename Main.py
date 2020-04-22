@@ -3,7 +3,11 @@ from colorama import Fore, Style
 
 print(Fore.GREEN + '\ngathering information...\n' + Style.RESET_ALL)
 
-covid = Covid(source='worldometers')
+try:
+    covid = Covid(source='worldometers')
+except:
+    print(Fore.RED + 'Connection Error!' + Style.RESET_ALL)
+    quit()
 
 list_negara = [print('- {}'.format(negara)) for negara in sorted(covid.list_countries())]
 
